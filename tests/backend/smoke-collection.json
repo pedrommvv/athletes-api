@@ -1,0 +1,456 @@
+{
+	"info": {
+		"_postman_id": "baa5bc3e-4762-43e6-8914-095fab35f8d3",
+		"name": "Testing Stuff",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Athletes",
+			"item": [
+				{
+					"name": "athletes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Guarantee that fields aren't null\", function () {",
+									"    pm.expect(jsonData[0].athlete_id).not.eql(undefined);",
+									"    pm.expect(jsonData[0].name).not.eql(undefined);",
+									"    pm.expect(jsonData[0].surname).not.eql(undefined);",
+									"    pm.expect(jsonData[0].dateOfBirth).not.eql(undefined);",
+									"    pm.expect(jsonData[0].bio).not.eql(undefined);",
+									"    pm.expect(jsonData[0].weight).not.eql(undefined);",
+									"    pm.expect(jsonData[0].height).not.eql(undefined);",
+									"    pm.expect(jsonData[0].photo_id).not.eql(undefined);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"athlete_id\");",
+									"    pm.expect(pm.response.text()).to.include(\"name\");",
+									"    pm.expect(pm.response.text()).to.include(\"surname\");",
+									"    pm.expect(pm.response.text()).to.include(\"dateOfBirth\");",
+									"    pm.expect(pm.response.text()).to.include(\"bio\");",
+									"    pm.expect(pm.response.text()).to.include(\"weight\");",
+									"    pm.expect(pm.response.text()).to.include(\"height\");",
+									"    pm.expect(pm.response.text()).to.include(\"photo_id\");",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"var schema = {",
+									"    \"type\": \"array\",",
+									"    \"items\": [{",
+									"        type: \"object\",",
+									"        properties:{",
+									"         \"athlete_id\": {",
+									"            \"type\":\"string\"",
+									"             },",
+									"         \"name\": {",
+									"             \"type\":\"string\"",
+									"             },",
+									"         \"surname\": {",
+									"             \"type\":\"string\"",
+									"             },",
+									"         \"dateOfBirth\": {",
+									"             \"type\":\"string\"",
+									"             },",
+									"         \"bio\": {",
+									"             \"type\":\"string\"",
+									"             },",
+									"         \"weight\": {",
+									"             \"type\":\"number\"",
+									"             },",
+									"         \"height\": {",
+									"             \"type\":\"number\"",
+									"             },",
+									"         \"photo_id\": {",
+									"             \"type\":\"number\"",
+									"             }",
+									"        }",
+									"    }]",
+									"};",
+									"",
+									"pm.test('Schema is valid', function () {",
+									"  pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/athletes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"athletes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "athlete-id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Guarantee that fields aren't null\", function () {",
+									"    pm.expect(jsonData.athlete_id).not.eql(undefined);",
+									"    pm.expect(jsonData.name).not.eql(undefined);",
+									"    pm.expect(jsonData.surname).not.eql(undefined);",
+									"    pm.expect(jsonData.dateOfBirth).not.eql(undefined);",
+									"    pm.expect(jsonData.bio).not.eql(undefined);",
+									"    pm.expect(jsonData.weight).not.eql(undefined);",
+									"    pm.expect(jsonData.height).not.eql(undefined);",
+									"    pm.expect(jsonData.photo_id).not.eql(undefined);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"athlete_id\");",
+									"    pm.expect(pm.response.text()).to.include(\"name\");",
+									"    pm.expect(pm.response.text()).to.include(\"surname\");",
+									"    pm.expect(pm.response.text()).to.include(\"dateOfBirth\");",
+									"    pm.expect(pm.response.text()).to.include(\"bio\");",
+									"    pm.expect(pm.response.text()).to.include(\"weight\");",
+									"    pm.expect(pm.response.text()).to.include(\"height\");",
+									"    pm.expect(pm.response.text()).to.include(\"photo_id\");",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/athletes/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"athletes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "photo",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/athletes/17/photo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"athletes",
+								"17",
+								"photo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "results",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Guarantee that fields aren't null\", function () {",
+									"    pm.expect(jsonData[0].city).not.eql(undefined);",
+									"    pm.expect(jsonData[0].year).not.eql(undefined);",
+									"    pm.expect(jsonData[0].gold).not.eql(undefined);",
+									"    pm.expect(jsonData[0].silver).not.eql(undefined);",
+									"    pm.expect(jsonData[0].bronze).not.eql(undefined);",
+									"    pm.expect(jsonData[0].fourth).not.eql(undefined);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"city\");",
+									"    pm.expect(pm.response.text()).to.include(\"year\");",
+									"    pm.expect(pm.response.text()).to.include(\"gold\");",
+									"    pm.expect(pm.response.text()).to.include(\"silver\");",
+									"    pm.expect(pm.response.text()).to.include(\"bronze\");",
+									"    pm.expect(pm.response.text()).to.include(\"fourths\");",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/athletes/1/results",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"athletes",
+								"1",
+								"results"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Games",
+			"item": [
+				{
+					"name": "games",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Guarantee that fields aren't null\", function () {",
+									"    pm.expect(jsonData[0].game_id).not.eql(undefined);",
+									"    pm.expect(jsonData[0].city).not.eql(undefined);",
+									"    pm.expect(jsonData[0].year).not.eql(undefined);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"game_id\");",
+									"    pm.expect(pm.response.text()).to.include(\"city\");",
+									"    pm.expect(pm.response.text()).to.include(\"year\");",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"var schema = {",
+									"    \"type\": \"array\",",
+									"    \"items\": [{",
+									"        type: \"object\",",
+									"        properties:{",
+									"         \"game_id\": {",
+									"            \"type\":\"number\"",
+									"             },",
+									"         \"city\": {",
+									"             \"type\":\"string\"",
+									"             },",
+									"         \"year\": {",
+									"             \"type\":\"number\"",
+									"             }",
+									"        }",
+									"    }]",
+									"};",
+									"",
+									"pm.test('Schema is valid', function () {",
+									"  pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/games/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"games",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "athletes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"",
+									"pm.test(\"Guarantee that fields aren't null\", function () {",
+									"    pm.expect(jsonData[0].athlete_id).not.eql(undefined);",
+									"    pm.expect(jsonData[0].name).not.eql(undefined);",
+									"    pm.expect(jsonData[0].surname).not.eql(undefined);",
+									"    pm.expect(jsonData[0].dateOfBirth).not.eql(undefined);",
+									"    pm.expect(jsonData[0].bio).not.eql(undefined);",
+									"    pm.expect(jsonData[0].weight).not.eql(undefined);",
+									"    pm.expect(jsonData[0].height).not.eql(undefined);",
+									"    pm.expect(jsonData[0].photo_id).not.eql(undefined);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"athlete_id\");",
+									"    pm.expect(pm.response.text()).to.include(\"name\");",
+									"    pm.expect(pm.response.text()).to.include(\"surname\");",
+									"    pm.expect(pm.response.text()).to.include(\"dateOfBirth\");",
+									"    pm.expect(pm.response.text()).to.include(\"bio\");",
+									"    pm.expect(pm.response.text()).to.include(\"weight\");",
+									"    pm.expect(pm.response.text()).to.include(\"height\");",
+									"    pm.expect(pm.response.text()).to.include(\"photo_id\");",
+									"});",
+									"",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									"",
+									"var schema = {",
+									"    \"type\": \"array\",",
+									"    \"items\": [{",
+									"        type: \"object\",",
+									"        properties:{",
+									"         \"athlete_id\": {",
+									"            \"type\":\"string\"",
+									"             },",
+									"         \"name\": {",
+									"             \"type\":\"string\"",
+									"             },",
+									"         \"surname\": {",
+									"             \"type\":\"string\"",
+									"             },",
+									"         \"dateOfBirth\": {",
+									"             \"type\":\"string\"",
+									"             },",
+									"         \"bio\": {",
+									"             \"type\":\"string\"",
+									"             },",
+									"         \"weight\": {",
+									"             \"type\":\"number\"",
+									"             },",
+									"         \"height\": {",
+									"             \"type\":\"number\"",
+									"             },",
+									"         \"photo_id\": {",
+									"             \"type\":\"number\"",
+									"             }",
+									"        }",
+									"    }]",
+									"};",
+									"",
+									"pm.test('Schema is valid', function () {",
+									"  pm.expect(tv4.validate(pm.response.json(), schema)).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/games/3/athletes/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"games",
+								"3",
+								"athletes",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
